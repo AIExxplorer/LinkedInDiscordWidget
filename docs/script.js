@@ -1,3 +1,4 @@
+// Event listener para o botão de conectar ao Discord
 document.getElementById('connect-discord').addEventListener('click', function() {
     fetch('https://discord.com/api/webhooks/1297124207456419851/eZ6YkUJTNnbmhddBPFZWsiIaVukSL6MjwJYmQ1uNRXqpUBwZPecfqFZ_khjDoz4NnwaD', {
         method: 'POST',
@@ -27,15 +28,12 @@ document.getElementById('connect-discord').addEventListener('click', function() 
     });
 });
 
-// Função para buscar dados do LinkedIn usando o access_token
+// Função para buscar dados do LinkedIn usando uma função serverless
 const getDataFromLinkedIn = async () => {
-    const accessToken = 'AQUwHw9-UxaRF02FbMgfR_MM0CGimwwiAAr5jehpKzB1xLZjHA07GmDgkTQCVG5-OXqGFSxo5G_J54ULE3WLKY-xcFMUr9DbUJwLaXdgj8beOGbMHpxelnuj8jQ8VCVK8YQk4xLqDjKTOpa0giJYpUcEGd4VPjbGnbr6L6G26hvcmBGx0ZROnPyQ2nUzLS4pU93ps8AWdMkimM5PlhcWPqhxtf1W-vwihnfoHwVBq4JcNLOharlTVi15JCsWiT7RZYQKW1m6jDM81_TuD4mk_q5OM_Yzrqi9mcaIlTrBCicHncRFl8bhVZ0xNyMLeGofsmX2j95HSJYY2c5tNddYyy12wi9dwA';
-
     try {
-        const response = await fetch('https://api.linkedin.com/v2/me', {
+        const response = await fetch('/.netlify/functions/fetchLinkedInData', {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
             }
         });
