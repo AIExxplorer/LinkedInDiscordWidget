@@ -25,8 +25,9 @@ async function refreshAccessToken(refreshToken) {
 
         const data = await response.json();
         if (response.ok) {
-            // Atualiza os tokens
             console.log('Novo access token gerado:', data.access_token);
+            // Atualiza a variável de ambiente com o novo token (temporariamente, para uso neste contexto)
+            process.env.LINKEDIN_ACCESS_TOKEN = data.access_token;
             return data.access_token;
         } else {
             console.error('Erro ao renovar access token:', data);
@@ -52,9 +53,9 @@ exports.handler = async (event) => {
             },
         });
 
-        // Se o access token estiver expirado, vamos renová-lo
-        if (response.status === 401) {
-            console.log('Token expirado, tentando renovar...');
+        // Verifica se o token expirou ou se há outro problema de autorização
+        if (response.status === 401 || response.status === 403) {
+            console.log('Token expirado ou inválido, tentando renovar...');
             accessToken = await refreshAccessToken(refreshToken);
             
             // Refaz a requisição com o novo access token
@@ -74,14 +75,15 @@ exports.handler = async (event) => {
                 body: JSON.stringify(data),
             };
         } else {
-            console.error('Erro na requisição LinkedIn:', response.status);
+            const errorText = await response.text();
+            console.error('Erro na requisição LinkedIn:', response.status, errorText);
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn', status: response.status }),
+                body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn', status: response.status, details: errorText }),
             };
         }
     } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro interno:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: 'Erro interno ao acessar o LinkedIn', details: error.toString() }),
