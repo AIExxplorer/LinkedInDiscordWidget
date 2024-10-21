@@ -1,5 +1,41 @@
 const fetch = require('node-fetch');
 
+async function refreshToken() {
+    const refreshToken = process.env.LINKEDIN_REFRESH_TOKEN;
+    const clientId = process.env.LINKEDIN_CLIENT_ID;
+    const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
+    const redirectUri = process.env.LINKEDIN_REDIRECT_URI;
+
+    try {
+        const response = await fetch('https://www.linkedin.com/oauth/v2/accessToken', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                grant_type: 'refresh_token',
+                refresh_token: refreshToken,
+                client_id: clientId,
+                client_secret: clientSecret,
+                redirect_uri: redirectUri
+            })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            // Atualiza os tokens nas variáveis de ambiente
+            process.env.LINKEDIN_ACCESS_TOKEN = data.access_token;
+            process.env.LINKEDIN_REFRESH_TOKEN = data.refresh_token;
+
+            console.log('Tokens atualizados com sucesso!');
+        } else {
+            console.error('Erro ao atualizar o token:', response.status, await response.text());
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar o token:', error);
+    }
+}
+
 exports.handler = async (event) => {
     const accessToken = process.env.LINKEDIN_ACCESS_TOKEN;
 
@@ -13,11 +49,17 @@ exports.handler = async (event) => {
         });
 
         if (!response.ok) {
-            // Retornar um JSON com a mensagem de erro específica
-            return {
-                statusCode: response.status,
-                body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn', status: response.status })
-            };
+            // Se o token estiver expirado, tenta renovar usando o refresh token
+            if (response.status === 401) {
+                await refreshToken();
+                // Tenta buscar os dados novamente
+                return exports.handler(event);
+            } else {
+                return {
+                    statusCode: response.status,
+                    body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn', status: response.status })
+                };
+            }
         }
 
         const data = await response.json();
