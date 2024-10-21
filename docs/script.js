@@ -37,16 +37,19 @@ const getDataFromLinkedIn = async () => {
             }
         });
 
+        // Verifica se a resposta está OK
         if (response.ok) {
             const data = await response.json();
             console.log('Dados do usuário LinkedIn:', data);
-            // Aqui você pode manipular os dados como desejar
+            // Manipule os dados aqui, se necessário
         } else {
-            console.error('Erro na requisição LinkedIn:', response.status);
-            alert('Erro ao buscar dados do LinkedIn.');
+            // Se não estiver OK, tenta extrair o corpo de erro
+            const errorText = await response.text(); // Usa response.text() para capturar o erro completo
+            console.error('Erro na requisição LinkedIn:', response.status, errorText);
+            alert(`Erro ao buscar dados do LinkedIn: ${response.status}`);
         }
     } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro na conexão com o LinkedIn:', error);
         alert('Erro ao conectar ao LinkedIn. Verifique o console para mais detalhes.');
     }
 };
