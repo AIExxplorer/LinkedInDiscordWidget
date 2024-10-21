@@ -22,9 +22,18 @@ LinkedInDiscordWidget/
 └── README.md                # Documentação do projeto
 ```
 
+
 ## 🚀 Deploy e Acesso
 
-O widget está hospedado via **GitHub Pages**. Acesse diretamente através deste [link](https://AIExxplorer.github.io/LinkedInDiscordWidget/) para visualizar a aplicação.
+O widget está hospedado via **GitHub Pages**. Acesse diretamente através deste [link](https://aiexxplorer.github.io/LinkedInDiscordWidget/) para visualizar a aplicação.
+
+## 🖼️ Imagens e Recursos
+<table style="width:100%; border:none;">
+    <tr>
+        <td><strong>Logo Artificial Universe</strong></td>
+        <td align="right"><img src="react-app/public/assets/logo-artificial-universe.png" width="150" alt="Logo Artificial Universe"></td>
+    </tr>
+</table>
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -42,3 +51,15 @@ Para mais informações, entre em contato:
 ---
 
 <div align="center"> © 2024 Artificial Universe. Todos os direitos reservados. </div>
+
+<div align="center">
+    <img src="react-app/public/assets/slogan.png" alt="CodingTheFuture" width="150">
+</div>
+
+<div align="center">
+    <img src="react-app/public/assets/assinatura-digital.png" alt="Assinatura AIExxplorer" width="150">
+</div>
+
+---
+
+<div align="center">Feito com ❤️ pela equipe da Artificial Universe para melhorar a experiência de integração para desenvolvedores e usuários.</div>
