@@ -41,10 +41,11 @@ const getDataFromLinkedIn = async () => {
         if (response.ok) {
             const data = await response.json();
             console.log('Dados do usuário LinkedIn:', data);
-            // Aqui você pode manipular os dados como desejar
+            // Manipule os dados como desejar
         } else {
-            console.error('Erro na requisição LinkedIn:', response.status);
-            alert('Erro ao buscar dados do LinkedIn.');
+            const errorData = await response.json();
+            console.error('Erro na requisição LinkedIn:', errorData);
+            alert(`Erro ao buscar dados do LinkedIn: ${errorData.error}`);
         }
     } catch (error) {
         console.error('Erro:', error);

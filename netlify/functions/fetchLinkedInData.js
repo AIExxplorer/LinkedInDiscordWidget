@@ -1,23 +1,23 @@
 const fetch = require('node-fetch');
 
-exports.handler = async function(event) {
+exports.handler = async (event) => {
     const accessToken = process.env.LINKEDIN_ACCESS_TOKEN;
-    
-    // Configure a URL para a API do LinkedIn
-    const url = 'https://api.linkedin.com/v2/me';
-    
+
     try {
-        const response = await fetch(url, {
+        const response = await fetch('https://api.linkedin.com/v2/me', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
-                'x-li-format': 'json'
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
             }
         });
 
         if (!response.ok) {
-            throw new Error(`Erro na API LinkedIn: ${response.statusText}`);
+            // Retornar um JSON com a mensagem de erro específica
+            return {
+                statusCode: response.status,
+                body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn', status: response.status })
+            };
         }
 
         const data = await response.json();
@@ -26,10 +26,9 @@ exports.handler = async function(event) {
             body: JSON.stringify(data)
         };
     } catch (error) {
-        console.error('Erro ao buscar dados do LinkedIn:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Erro ao buscar dados do LinkedIn' })
+            body: JSON.stringify({ error: 'Erro interno ao acessar o LinkedIn', details: error.toString() })
         };
     }
 };
