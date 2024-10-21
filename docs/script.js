@@ -1,4 +1,3 @@
-// Event listener para o botão de conectar ao Discord
 document.getElementById('connect-discord').addEventListener('click', function() {
     fetch('https://discord.com/api/webhooks/1297124207456419851/eZ6YkUJTNnbmhddBPFZWsiIaVukSL6MjwJYmQ1uNRXqpUBwZPecfqFZ_khjDoz4NnwaD', {
         method: 'POST',
@@ -28,21 +27,20 @@ document.getElementById('connect-discord').addEventListener('click', function() 
     });
 });
 
-// Função para buscar dados do LinkedIn usando a função serverless
+// Função para buscar dados do LinkedIn usando a função serverless no Netlify
 const getDataFromLinkedIn = async () => {
     try {
         const response = await fetch('/.netlify/functions/fetchLinkedInData', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         });
 
         if (response.ok) {
             const data = await response.json();
             console.log('Dados do usuário LinkedIn:', data);
-            // Exiba os dados na interface do usuário
-            document.getElementById('linkedin-data').textContent = JSON.stringify(data);
+            // Aqui você pode manipular os dados como desejar
         } else {
             console.error('Erro na requisição LinkedIn:', response.status);
             alert('Erro ao buscar dados do LinkedIn.');
@@ -53,5 +51,5 @@ const getDataFromLinkedIn = async () => {
     }
 };
 
-// Chame a função após o carregamento da página ou quando necessário
+// Chamar a função quando necessário, por exemplo, após a autenticação
 getDataFromLinkedIn();
