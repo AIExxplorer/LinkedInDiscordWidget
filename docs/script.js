@@ -28,7 +28,7 @@ document.getElementById('connect-discord').addEventListener('click', function() 
     });
 });
 
-// Função para buscar dados do LinkedIn usando uma função serverless
+// Função para buscar dados do LinkedIn usando a função serverless
 const getDataFromLinkedIn = async () => {
     try {
         const response = await fetch('/.netlify/functions/fetchLinkedInData', {
@@ -41,11 +41,10 @@ const getDataFromLinkedIn = async () => {
         if (response.ok) {
             const data = await response.json();
             console.log('Dados do usuário LinkedIn:', data);
-            // Manipule os dados como desejar
+            // Aqui você pode manipular os dados como desejar
         } else {
-            const errorData = await response.json();
-            console.error('Erro na requisição LinkedIn:', errorData);
-            alert(`Erro ao buscar dados do LinkedIn: ${errorData.error}`);
+            console.error('Erro na requisição LinkedIn:', response.status);
+            alert('Erro ao buscar dados do LinkedIn.');
         }
     } catch (error) {
         console.error('Erro:', error);
