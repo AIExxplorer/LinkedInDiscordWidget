@@ -1,50 +1,74 @@
+/* Estilos globais e responsividade */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1a1a1a; /* Cinza escuro */
-    color: #e0e0e0; /* Cinza claro para contraste */
+    background-color: #1a1a1a; /* Background cinza escuro */
+    color: #e0e0e0;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-header {
     text-align: center;
-    margin-bottom: 20px;
 }
 
+header, main, footer {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estilos para o logo principal */
 .main-logo {
-    max-width: 200px;
-}
-
-.secondary-logo {
     max-width: 150px;
-    margin: 20px 0;
+    margin: 20px auto;
 }
 
+/* Estilos para a logo secundária */
+.secondary-logo {
+    max-width: 100px;
+    margin: 20px auto;
+}
+
+/* Estilo do título */
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #00aaff; /* Azul tecnológico */
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 
+/* Parágrafos e links */
 p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 20px;
     color: #cccccc;
 }
 
+.privacy-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #00aaff;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do botão com efeitos */
 .styled-button {
     background-color: #00aaff;
     border: none;
-    padding: 15px 30px;
+    padding: 12px 25px;
     color: white;
     font-size: 1rem;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
@@ -54,25 +78,39 @@ p {
     transform: scale(1.05);
 }
 
-.privacy-link {
-    display: block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #00aaff;
-    font-weight: 300;
-}
-
-.privacy-link:hover {
-    text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    margin-top: 50px;
-    color: #888888;
-}
-
+/* Estilos para o slogan */
 .slogan {
-    max-width: 150px;
-    margin-bottom: 20px;
+    max-width: 200px;
+    margin: 20px 0;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 40px;
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .styled-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .main-logo {
+        max-width: 120px;
+    }
+
+    .secondary-logo {
+        max-width: 80px;
+    }
+
+    .slogan {
+        max-width: 150px;
+    }
 }

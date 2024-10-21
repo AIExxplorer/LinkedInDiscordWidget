@@ -1,5 +1,5 @@
 document.getElementById('connect-discord').addEventListener('click', function() {
-    fetch('https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN', {
+    fetch('https://discord.com/api/webhooks/1297124207456419851/eZ6YkUJTNnbmhddBPFZWsiIaVukSL6MjwJYmQ1uNRXqpUBwZPecfqFZ_khjDoz4NnwaD', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -11,9 +11,12 @@ document.getElementById('connect-discord').addEventListener('click', function() 
     .then(response => {
         if (response.ok) {
             alert('Conexão bem-sucedida!');
-            // Adiciona um efeito de feedback visual
             this.style.backgroundColor = '#00ff00';
             this.textContent = 'Conectado!';
+            setTimeout(() => {
+                this.style.backgroundColor = '#00aaff';
+                this.textContent = 'Conectar ao Discord';
+            }, 3000);
         } else {
             alert('Erro ao conectar ao Discord. Verifique o webhook.');
         }
