@@ -1,37 +1,78 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a; /* Cinza escuro */
+    color: #e0e0e0; /* Cinza claro para contraste */
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.widget {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+header {
     text-align: center;
-    max-width: 400px;
-    width: 100%;
-}
-
-.logo {
-    max-width: 100px;
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
+.main-logo {
+    max-width: 200px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.secondary-logo {
+    max-width: 150px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00aaff; /* Azul tecnológico */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+.styled-button {
+    background-color: #00aaff;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #0088cc;
+    transform: scale(1.05);
+}
+
+.privacy-link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00aaff;
+    font-weight: 300;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #888888;
+}
+
+.slogan {
+    max-width: 150px;
+    margin-bottom: 20px;
 }

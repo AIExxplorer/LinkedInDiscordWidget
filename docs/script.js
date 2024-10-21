@@ -11,6 +11,9 @@ document.getElementById('connect-discord').addEventListener('click', function() 
     .then(response => {
         if (response.ok) {
             alert('Conexão bem-sucedida!');
+            // Adiciona um efeito de feedback visual
+            this.style.backgroundColor = '#00ff00';
+            this.textContent = 'Conectado!';
         } else {
             alert('Erro ao conectar ao Discord. Verifique o webhook.');
         }
