@@ -57,7 +57,7 @@ Para mais informações, entre em contato:
 </div>
 
 <div align="center">
-    <img src="docs/public/assets/assinatura-digital.png" alt="Assinatura AIExxplorer" width="150">
+    <img src="docs/assets/assinatura-digital.png" alt="Assinatura AIExxplorer" width="150">
 </div>
 
 ---
