@@ -41,7 +41,8 @@ const getDataFromLinkedIn = async () => {
         if (response.ok) {
             const data = await response.json();
             console.log('Dados do usuário LinkedIn:', data);
-            // Aqui você pode manipular os dados como desejar
+            // Exiba os dados na interface do usuário
+            document.getElementById('linkedin-data').textContent = JSON.stringify(data);
         } else {
             console.error('Erro na requisição LinkedIn:', response.status);
             alert('Erro ao buscar dados do LinkedIn.');
@@ -52,5 +53,5 @@ const getDataFromLinkedIn = async () => {
     }
 };
 
-// Chamar a função quando necessário, por exemplo, após a autenticação
+// Chame a função após o carregamento da página ou quando necessário
 getDataFromLinkedIn();
