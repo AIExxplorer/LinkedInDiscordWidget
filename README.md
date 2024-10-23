@@ -2,6 +2,11 @@
 
 Este é o repositório do **LinkedIn Discord Widget**, um widget simples desenvolvido para conectar seu LinkedIn ao Discord utilizando um webhook.
 
+## NOTA:
+```
+Este projeto está em construção, podendo ocorrer ainda instabilidades na conexão direta com o LinkedIn. Acompanhe sempre para saber de futuras atualizações!
+```
+
 ## 📝 Sobre o Projeto
 
 Este widget é projetado para ser leve e prático, utilizando **HTML, CSS e JavaScript** puro, e é hospedado via **GitHub Pages**.
